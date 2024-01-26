@@ -2,9 +2,11 @@ package gestionefile;
 
 /**
  *
- * @author MC
- * @version 12/01/23
+ * @author RazvanDrosu
+ * @version 23/01/24
  */
+ import java.util.Scanner;
+
 public class GestioneFile {
 
     /**
@@ -16,11 +18,22 @@ public class GestioneFile {
         Lettore lettore = new Lettore("user.json");
         lettore.start();
         //2)ELABORAZIONE
+        Scanner scanner = new Scanner(System.in);
+
+        // Chiedi all'utente di inserire l'username
+        System.out.print("Inserisci l'username: ");
+        String username = scanner.nextLine();
+
+        // Chiedi all'utente di inserire la password
+        System.out.print("Inserisci la password: ");
+        String password = scanner.nextLine();
+
+        // Chiudi lo scanner
+        scanner.close();
         
         //3) SCRITTURA
-        Scrittore scrittore = new Scrittore("output.csv");
+        Scrittore scrittore = new Scrittore("output.csv", username, password);
         Thread threadScrittore = new Thread(scrittore);
         threadScrittore.start();
     }
-    
 }

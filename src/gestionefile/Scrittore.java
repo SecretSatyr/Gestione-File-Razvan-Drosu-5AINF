@@ -5,19 +5,24 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jdk.internal.util.StaticProperty;
 
 /**
  *
- * @author MC
- * @version 12/01/23
+ * @author RazvanDrosu
+ * @version 23/01/24
  */
 
 public class Scrittore implements Runnable{
 
     String nomeFile;
-    
-    public Scrittore(String nomeFile){
+    String username;
+    String password;
+    public Scrittore(String nomeFile, String username, String password){
         this.nomeFile = nomeFile;
+        this.username = username;
+        this.password = password;
+    
     }
     
     @Override
@@ -35,7 +40,7 @@ public class Scrittore implements Runnable{
             br = new BufferedWriter(
                     new FileWriter(nomeFile));
             //2) scrivo nel buffer
-            br.write("File in output");
+            br.write(username + ";" + password);
             br.write("\n\r");
             //3) svuoto il buffer e salvo nel file i dati
             br.flush();         
