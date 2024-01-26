@@ -27,31 +27,32 @@ public class GestioneFile {
         //2)ELABORAZIONE
         Scanner scanner = new Scanner(System.in);
 
-        // Chiedi all'utente di inserire l'username
+        // Chiedo all'utente di inserire l'username
         System.out.print("Inserisci l'username: ");
         String username = scanner.nextLine();
 
-        // Chiedi all'utente di inserire la password
+        // Chiedo all'utente di inserire la password
         System.out.print("Inserisci la password: ");
         String password = scanner.nextLine();
         
-        // Chiudi lo scanner
+        // Chiusura dello scanner
         scanner.close();
         try {
-            // Apri il file sorgente in lettura usando BufferedReader
+            // Aprertura del file sorgente in lettura usando BufferedReader
             BufferedReader reader = new BufferedReader(new FileReader(sourceFilePath));
 
-            // Apri il file di destinazione in scrittura usando BufferedWriter
+            // Apertura del file di destinazione in scrittura usando BufferedWriter
             BufferedWriter writer = new BufferedWriter(new FileWriter(destinationFilePath));
 
-            // Leggi ogni riga dal file sorgente e scrivila nel file di destinazione
+            // Lettura di ogni riga dal file sorgente e poi scritta nel file di destinazione
             String line;
             while ((line = reader.readLine()) != null) {
                 writer.write(line);
-                writer.newLine(); // Aggiungi una nuova linea nel file di destinazione dopo ogni riga
+                writer.newLine(); 
+            // Aggiunta di una nuova linea nel file di destinazione dopo ogni riga
             }
 
-            // Chiudi le risorse
+            // Chiusura le risorse
             reader.close();
             writer.close();
 
